@@ -1,15 +1,16 @@
 inlets = 1;
 outlets = 2;
 
-var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+var alphabetDia = [60, 62, 64, 65, 67, 57, 59]; // 60=middleC
+var alphabetChro = [60, 61, 62, 63, 64, 65, 66, 67, 68, 57, 58, 59];
 var sequence = null;
 var currentStep = 0;
 
 function generate(n) {
 	sequence = new Array();
 	for (var i = 0; i < n; i++) {
-		var r = Math.floor(Math.random() * alphabet.length);
-		sequence.push(alphabet[r]);
+		var r = Math.floor(Math.random() * alphabetDia.length);
+		sequence.push(alphabetDia[r]);
 	}
 	outlet(0, sequence);
 }
