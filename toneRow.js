@@ -6,11 +6,12 @@ var alphabetChro = [60, 61, 62, 63, 64, 65, 66, 67, 68, 57, 58, 59];
 var sequence = null;
 var currentStep = 0;
 
-function generate(n) {
+function generate(n, offset) {
 	sequence = new Array();
+	// Assign random value to each step in sequence, apply transposition offset
 	for (var i = 0; i < n; i++) {
-		var r = Math.floor(Math.random() * alphabetDia.length);
-		sequence.push(alphabetDia[r]);
+		var e = Math.floor(Math.random() * alphabetDia.length);
+		sequence.push(alphabetDia[e]+offset);
 	}
 	outlet(0, sequence);
 }
