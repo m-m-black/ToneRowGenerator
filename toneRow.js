@@ -16,6 +16,15 @@ function generate(n, offset) {
 	outlet(0, sequence);
 }
 
+function generateChro(n) {
+	sequence = new Array();
+	for (var i = 0; i < n; i++) {
+		var e = Math.floor(Math.random() * alphabetChro.length);
+		sequence.push(alphabetChro[e]);
+	}
+	outlet(0, sequence);
+}
+
 function step() {
 	if (sequence != null) {
 		outlet(1, sequence[currentStep]);
