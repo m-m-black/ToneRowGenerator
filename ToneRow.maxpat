@@ -67,7 +67,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-7",
-					"items" : [ "Major", ",", "Minor" ],
+					"items" : [ "Ionian", ",", "Dorian", ",", "Phrygian", ",", "Lydian", ",", "Mixolydian", ",", "Aeolian", ",", "Locrian", ",", "Major3", ",", "Minor3", ",", "Diminished3", ",", "Augmented3", ",", "Major7", ",", "Minor7", ",", "Dominant7", ",", "Diminished7", ",", "Augmented7" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -195,8 +195,19 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 515.0, 20.0, 58.0, 22.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-99",
 									"maxclass" : "newobj",
@@ -559,7 +570,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 372.0, 98.0, 50.0, 22.0 ],
-									"text" : "Minor"
+									"text" : "Minor7"
 								}
 
 							}
@@ -652,13 +663,12 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-25",
-									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 232.0, 271.0, 40.0, 35.0 ],
-									"text" : "8 0 Minor"
+									"patching_rect" : [ 232.0, 271.0, 103.0, 22.0 ],
+									"text" : "8 0 Minor7"
 								}
 
 							}
@@ -669,7 +679,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 232.0, 232.0, 65.0, 22.0 ],
+									"patching_rect" : [ 232.0, 225.0, 65.0, 22.0 ],
 									"text" : "pak 0 0 $1"
 								}
 
@@ -1124,7 +1134,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 645.0, 32.5, 150.0, 47.0 ],
+									"patching_rect" : [ 694.0, 653.5, 150.0, 47.0 ],
 									"text" : "Converts integers 1-11 to MIDI notes. No longer required. "
 								}
 
@@ -2008,7 +2018,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 529.0, 45.0, 112.0, 22.0 ],
+									"patching_rect" : [ 578.0, 666.0, 112.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -2149,7 +2159,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 8.0, 525.0, 50.0, 22.0 ],
-									"text" : "60"
+									"text" : "67"
 								}
 
 							}
@@ -2305,6 +2315,24 @@
 									"midpoints" : [ 241.5, 174.0, 106.5, 174.0 ],
 									"order" : 2,
 									"source" : [ "obj-17", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-46", 0 ],
+									"midpoints" : [ 524.5, 269.5, 350.5, 269.5 ],
+									"order" : 1,
+									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-77", 0 ],
+									"midpoints" : [ 524.5, 66.5, 381.5, 66.5 ],
+									"order" : 0,
+									"source" : [ "obj-2", 0 ]
 								}
 
 							}
@@ -2580,7 +2608,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 85.0, 277.0, 51.0, 62.0 ],
-					"text" : "60 63 65 58 65 63 60 63"
+					"text" : "67 60 70 70 60 67 60 70"
 				}
 
 			}
