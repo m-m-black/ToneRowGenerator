@@ -24,23 +24,31 @@ var augmented7 = [60, 64, 68, 70];
 var sequence = null;
 var currentStep = 0;
 
-function generate(n, offset, scale) {
-	alphabet = setScale(scale);
+function generate(n, offset, scale, repeats) {
+	alphabet = setScale(scale).slice();
 	sequence = new Array();
 	// Assign random value to each step in sequence, apply transposition offset
-	for (var i = 0; i < n; i++) {
-		var e = Math.floor(Math.random() * alphabet.length);
-		sequence.push(alphabet[e]+offset);
-	}
-	outlet(0, sequence);
-}
-
-function generateChro(n) {
-	alphabet = chromatic;
-	sequence = new Array();
-	for (var i = 0; i < n; i++) {
-		var e = Math.floor(Math.random() * alphabet.length);
-		sequence.push(alphabet[e]);
+	if (repeats == "Repeats") { // Any value can be picked any number of times
+		for (var i = 0; i < n; i++) {
+			var e = Math.floor(Math.random() * alphabet.length);
+			sequence.push(alphabet[e]+offset);
+		}
+	} else if (repeats == "NoRepeats") { // Once picked, values are removed from alphabet
+		for (var i = 0; i < n; i++) {
+			var e = Math.floor(Math.random() * alphabet.length);
+			sequence.push(alphabet[e]+offset);
+			alphabet.splice(e, 1);
+		}
+	} else if (repeats == "NonSequentialRepeats") { // Values are temporarily removed from alphabet after being picked
+		var exile = null;
+		for (var i = 0; i < n; i++) {
+			var e = Math.floor(Math.random() * alphabet.length);
+			sequence.push(alphabet[e]+offset);
+			if (exile != null) {
+				alphabet.push(exile);
+			}
+			exile = parseInt(alphabet.splice(e, 1));
+		}
 	}
 	outlet(0, sequence);
 }
@@ -78,6 +86,8 @@ function setScale(scale) {
 		return diminished7;
 	} else if (scale == "Augmented7") {
 		return augmented7;
+	} else if (scale == "Chromatic") {
+		return chromatic;
 	} else {
 		return ionian; // Default scale setting
 	}
